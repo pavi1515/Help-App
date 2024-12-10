@@ -1,0 +1,309 @@
+
+
+ScreenManager:
+    Page1:
+    Page2:
+    Page3:
+    Page4:
+    Page5:
+    Page7:
+<Page1>:
+    name:'page1'
+    MDScreen:
+        md_bg_color:[100/255,150/255,154/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:1000,1050
+            md_bg_color:[150/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5,"center_y":.5}
+            elevation:0
+            padding:100
+            spacing:100
+            orientation:'vertical'
+            MDLabel:
+                text:'HELP App'
+                font_style:'Button'
+                size_hint_y:None
+                height:self.texture_size[1]
+                halign:'center'
+                font_size:80
+            
+        
+            MDRectangleFlatButton:
+                text:'LOGIN'
+                pos_hint:{"center_x":.5}
+                font_size:50
+                on_press:root.manager.current='page2'
+            MDRectangleFlatButton:
+                text:'REGISTER'
+                pos_hint:{"center_x":.5}
+                font_size:50
+                on_press:root.manager.current='page3'
+            MDRectangleFlatButton:
+                text:'Help App Guide'
+                pos_hint:{"center_x":.5}
+                font_size:50
+                on_press:root.manager.current='page7'         
+            Widget:
+                size_hint_y:None
+                height:  30 
+                   
+<Page2>:
+    name:'page2'
+    MDScreen:
+        md_bg_color:[120/255,150/255,154/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:1000,1050
+            md_bg_color:[155/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5,"center_y":.5}
+       
+            padding:125
+            spacing:128
+            orientation:'vertical'
+            MDLabel:
+                text:'Login'
+                font_style:'Button'
+                size_hint_y:None
+                height:self.texture_size[1]
+                halign:'center'
+                font_size:60
+            
+            MDTextField:
+                id: username
+                hint_text:'USERNAME'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:50
+                pos_hint:{"center_x":.5}
+            MDTextField:
+                property: round
+                id: password
+                hint_text:'password'    
+                icon_right:'eye-off'
+                width:200
+                size_hint_x:None
+                font_size:50
+                pos_hint:{"center_x":0.5}   
+                password:True 
+            MDRectangleFlatButton:
+                id: pavibutton
+                text:'LOGIN'
+                pos_hint:{"center_x":.5}
+                font_size:50
+                on_state:if (app.login_user())==True: root.manager.current='page5'
+                on_state:if (app.login_user())==False: root.manager.current='page1'                 
+
+                
+            Widget:
+                size_hint_y:None
+                height:  30      
+                  
+    
+                
+            
+              
+                
+
+<Page3>:
+    name:'page3'
+    MDScreen:
+        md_bg_color:[155/255,250/255,255/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:300,650
+            md_bg_color:[155/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5}
+      
+            padding:12
+            spacing:12
+            orientation:'vertical'
+            
+
+            MDLabel:
+                text:'Register'
+                font_style:'Button'
+                size_hint_y:None
+                height:self.texture_size[1]
+                halign:'center'
+                font_size:60
+            MDTextField:
+                id: fname
+                hint_text:'First Name'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5,"center_y":-0.8}
+            MDTextField:
+                id: lname
+                hint_text:'Last Name'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5,"center_y":-0.8}   
+            MDTextField:
+                id: username
+                hint_text:'USERNAME'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5,"center_y":-0.8}
+            MDTextField:
+                id: pnumber
+                hint_text:'Personal Number'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5,"center_y":-0.8}
+            MDTextField:
+                id: rnumber
+                hint_text:'Relative Number'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5,"center_y":-0.8}
+            MDTextField:
+                id: location
+                hint_text:'Location'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5}            
+            MDTextField:
+                id: password
+                hint_text:'password'    
+                icon_right:'eye-off'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":0.5}   
+                password:True 
+
+            MDRectangleFlatButton:
+                text:'Register'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press:app.register_user()
+            MDRectangleFlatButton:
+                text:'Back'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press: root.manager.current='page1'
+            
+<Page4>:
+    name:'page4'
+    MDFloatLayout:
+    
+        MDLabel:
+            text:'WELCOME TO PAGE3'
+            halign:'center'
+            font_size:10
+        MDCard:
+            size_hint:None,None
+            size:300,500
+            pos_hint:{"center_x":.5,"center_y":.5}
+            elevation:30
+            
+            padding:25
+            spacing:28
+        MDRectangleFlatButton:
+            text:'Back'
+            pos_hint:{"center_x":.5,"center_y":.5}
+            on_press:root.manager.current='page1'            
+
+<Page5>:
+    name:'page5'
+    MDScreen:
+        md_bg_color:[155/255,250/255,255/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:300,350
+            md_bg_color:[155/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5,"center_y":.5}
+         
+            padding:25
+            spacing:28
+            orientation:'vertical'
+            MDLabel:
+                text:'Welcome'
+                font_style:'Button'
+                size_hint_y:None
+                height:self.texture_size[1]
+                halign:'center'
+                font_size:50
+            
+
+            MDTextField:
+                id: dur
+                hint_text:'Duration in seconds'    
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5}
+            
+            MDTextField:
+                id: location_new
+                hint_text:'Where are you going? (Be as descriptive as possible)'    
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5}
+            
+            MDRectangleFlatButton:
+                text:'TURN ON'
+                pos_hint:{"center_x":.5}
+                font_size:30
+                on_press:app.turn_on()
+                on_state:if (app.turn_on())==True: root.manager.current='page5'
+
+             
+            MDRectangleFlatButton:
+                text:'Back'
+                pos_hint:{"center_x":.5}
+                font_size:30
+                on_press: root.manager.current='page1'
+
+<Page7>:
+    name:'page7'
+    MDScreen:
+        md_bg_color:[120/255,150/255,154/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:1000,1050
+            md_bg_color:[155/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5,"center_y":.5}
+         
+            padding:100
+            spacing:100
+            orientation:'vertical'
+            MDLabel:
+                text:'Help App Guide'
+                font_style:'Button'
+                size_hint_y:None
+                height:self.texture_size[1]
+                halign:'center'
+                font_size:60
+            MDLabel:
+                text:'The Help app is built to serve the needs of the users who find themselves in an emergency situation and need Help. To activate the functionality of the App, say Help 3 or more times when in an emergency situation.'
+                size_hint_y:None
+                height:self.texture_size[1]
+                font_size:60
+            MDRectangleFlatButton:
+                text:'Back'
+                pos_hint:{"center_x":.5, "center_y":4}
+                font_size:60
+            
+                on_press: root.manager.current='page1'
+            
